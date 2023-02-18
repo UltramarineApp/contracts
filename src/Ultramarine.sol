@@ -48,12 +48,12 @@ contract Ultramarine is ERC721, VRFConsumerBaseV2, ConfirmedOwner {
     address private _channel;
 
     VRFCoordinatorV2Interface COORDINATOR;
-    bytes32 private keyHash = 0x79d3d8832d904592c0bf9818b621522c988bb8b0c05cdc3b15aea1b6e8db0c15;
-    address private coordinator = 0x2Ca8E0C643bDe4C2E08ab1fA0da3401AdAD7734D;
-    uint32 private callbackGasLimit = 100000;
+    bytes32 private keyHash = 0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f;
+    address private coordinator = 0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed;
+    uint32 private callbackGasLimit = 200000;
     uint16 private requestConfirmations = 3;
     uint32 private numWords = 1;
-    uint64 private subscriptionId; // 9938
+    uint64 private subscriptionId;
 
     modifier isLiquid() {
         require(_liquidity > 0, "No liquidity in the game.");
@@ -219,10 +219,8 @@ contract Ultramarine is ERC721, VRFConsumerBaseV2, ConfirmedOwner {
                 Base64.encode(abi.encodePacked(
                     '{"name": "', string(abi.encodePacked(
                         result, 'Game #', Strings.toString(tokenId)
-                    )), '","description": "', string(abi.encodePacked(
-                        'ULTRAMARINE NFT GAME ENGINE'
-                    )), '","external_url": "', string(abi.encodePacked(
-                        'https://ultramarine.app/#/', Strings.toHexString(uint160(address(this)), 20), '/history/', Strings.toString(tokenId)
+                    )), '","background_color":"', background, '","external_url": "', string(abi.encodePacked(
+                        'https://ultramarine.app/#/games/', Strings.toHexString(uint160(address(this)), 20), '/', Strings.toString(tokenId)
                     )), '","attributes": [{"trait_type": "Random","value": "', 
                     rand_emoji, 
                     '"},{"trait_type": "Amount","value": "', 
