@@ -18,7 +18,7 @@ contract FactoryUltramarineTest is Test {
         buttons_[1]._background = "1a435d";
         buttons_[1]._emoji = unicode"⚽️";
         factory.createGame("Game", buttons_);
-        (, , address owner, , , , , , ) = factory.getGame(1);
+        (, , address owner, , , , , , , ) = factory.getGame(1, address(this));
         assertEq(owner, address(this));
     }
 }
