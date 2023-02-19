@@ -22,7 +22,7 @@ contract FactoryUltramarine {
     mapping(uint256 => address) private _games;
 
     function createGame(
-        string memory name_, // Football versus
+        string memory name_, // Football Battle
         Button.Item[] memory buttons_ // [["5d2e1a","🏈"],["1a435d","⚽️"]]
     ) public returns(uint256, address) {
         _id++;
